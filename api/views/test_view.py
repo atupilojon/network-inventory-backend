@@ -1,8 +1,8 @@
 from flask import Blueprint, make_response, Response, jsonify
 
-mainIndex = Blueprint('mainIndex', __name__)
+test = Blueprint('test_connectivity', __name__)
 
 
-@mainIndex.route('/')
+@test.route('/api/v1/test')
 def index() -> Response:
     return make_response(jsonify({'connected': True}), 200)

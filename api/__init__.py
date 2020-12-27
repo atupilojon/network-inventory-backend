@@ -5,10 +5,12 @@ def create_app():
     app = Flask(__name__)
     app.config.from_pyfile('../config.py')
     with app.app_context():
-        from .views.main_view import mainIndex
+        from .views.test_view import test
         from .views.device_view import device
-        app.register_blueprint(mainIndex)
+        from .views.ipaddress_view import ipaddr
+        app.register_blueprint(test)
         app.register_blueprint(device)
+        app.register_blueprint(ipaddr)
         from .models import db, device
         db.init_app(app)
         db.create_all()
