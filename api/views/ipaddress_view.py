@@ -11,24 +11,24 @@ ipaddr = Blueprint('ipaddr', __name__)
 @ipaddr.route('/api/v1/ipaddr', methods=['POST', 'GET', 'DELETE'])
 def load_ipaddr() -> Response:
     if request.method == 'POST':
-        body_request = request.get_data()
         try:
+            body_request = request.get_data()
             add_ipaddr(json.loads(body_request))
             return make_response({'message': 'IP address added'}, 201)
         except Exception as exc:
             return handle_exceptions(exc)
 
     if request.method == 'DELETE':
-        body_request = request.args.get('ip')
         try:
+            body_request = request.args.get('ip')
             del_ipaddr(body_request)
             return make_response({'message': 'IP address deleted'}, 200)
         except Exception as exc:
             return handle_exceptions(exc)
 
     if request.method == 'GET':
-        body_request = request.args.get('ip')
         try:
+            body_request = request.args.get('ip')
             found_ip = get_ipaddr(body_request)
             return make_response(found_ip, 200)
         except Exception as exc:
