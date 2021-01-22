@@ -11,7 +11,7 @@ def create_app():
         app.register_blueprint(test)
         app.register_blueprint(device)
         app.register_blueprint(ipaddr)
-        from .models import db, device
+        from .models import db, device, ipaddr, location
         db.init_app(app)
         db.create_all()
         return app

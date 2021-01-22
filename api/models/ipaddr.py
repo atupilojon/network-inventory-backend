@@ -16,6 +16,7 @@ class IPAddress(db.Model):
     number_ip = db.Column(BIGINT(10, unsigned=True), primary_key=True)
     mask_ip = db.Column(INTEGER(2), nullable=False)
     type_ip = db.Column(db.String(20))
+    device_ip = db.relationship('Device', backref='ipaddress')
 
     def __repr__(self):
         return f'IP: {str_ipaddr(self.number_ip)}/{self.mask_ip} - {self.type_ip}'
